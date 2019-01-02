@@ -9,6 +9,7 @@ flask-sqlalchemy = "==2.3.2"
 "psycopg2" = "==2.7.4"
 
 [dev-packages]
+flask-testing = "==0.6.2"
 
 [requires]
 python_version = "3.6"
