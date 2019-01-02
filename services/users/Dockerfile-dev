@@ -1,11 +1,23 @@
 FROM python:3.6.5-alpine
 
+RUN apk update && \
+    apk add --virtual build-deps gcc python-dev musl-dev &&\
+    apk add --no-cache \
+    postgresql-dev \
+    netcat-openbsd
+
 WORKDIR /usr/src/app
 
-COPY . /usr/src/app
+COPY Pipfile /usr/src/app/Pipfile
+COPY Pipfile.lock /usr/src/app/Pipfile.lock
 
 RUN pip install pipenv && pipenv install --system
 
 
-# run server
-CMD python manage.py run -h 0.0.0.0
+COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
+RUN chmod +x /usr/src/app/entrypoint.sh
+
+COPY . /usr/src/app
+
+ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+
