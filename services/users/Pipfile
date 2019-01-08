@@ -7,6 +7,7 @@ name = "pypi"
 flask = "==1.0.2"
 flask-sqlalchemy = "==2.3.2"
 "psycopg2" = "==2.7.4"
+gunicorn = "*"
 
 [dev-packages]
 flask-testing = "==0.6.2"
