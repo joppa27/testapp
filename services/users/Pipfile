@@ -11,6 +11,8 @@ gunicorn = "*"
 
 [dev-packages]
 flask-testing = "==0.6.2"
+coverage = "==4.5.1"
+"flake8" = "==3.5.0"
 
 [requires]
 python_version = "3.6"

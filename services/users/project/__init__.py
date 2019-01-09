@@ -1,5 +1,4 @@
-
-from flask import Flask, jsonify
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
 
@@ -14,9 +13,7 @@ def create_app(script_info=None):
     app_settings = os.getenv('APP_SETTINGS')
     app.config.from_object(app_settings)
 
-
     db.init_app(app)
-
 
     from project.api.users import users_blueprint
     app.register_blueprint(users_blueprint)
@@ -26,4 +23,3 @@ def create_app(script_info=None):
         return {'app': app, 'db': db}
 
     return app
-
